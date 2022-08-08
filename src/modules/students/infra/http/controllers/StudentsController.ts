@@ -5,6 +5,7 @@ import CreateStudentService from "../../../services/CreateStudentService";
 import DeleteStudentService from "../../../services/DeleteStudentService";
 import ListStudentService from "../../../services/ListStudentService";
 import UpdateStudentService from "../../../services/UpdateStudentService";
+import ShowStudentByIdService from "../../../services/ShowStudentByIdService";
 
 export default class StudentsController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -32,6 +33,16 @@ export default class StudentsController {
     return response.json(student)
   }
 
+  public async show(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const showStudent = container.resolve(ShowStudentByIdService)
+
+    const student = await showStudent.execute({ id: Number(id) })
+
+    return response.json(student)
+  }
+
   public async index(request: Request, response: Response): Promise<Response> {
     const { page, limit } = request.query
 
@@ -48,7 +59,7 @@ export default class StudentsController {
 
   public async update(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
-    const { name, email, cpf } = request.body;
+    const { name, email } = request.body;
 
     const updateStudent = container.resolve(UpdateStudentService)
 

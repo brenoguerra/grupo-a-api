@@ -7,7 +7,20 @@ const studentsRouter = Router();
 const studentsController = new StudentsController()
 
 studentsRouter.get('/', studentsController.index)
-
+studentsRouter.get(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().required(),
+    },
+  }, {
+    messages: {
+      'string.empty': '{#label} não deve ser vazio!',
+      'any.required': '{#label} é um campo obrigatório!'
+    }
+  }),
+  studentsController.show
+)
 studentsRouter.post(
   '/',
   celebrate({
@@ -36,6 +49,8 @@ studentsRouter.put(
     [Segments.BODY]: {
       name: Joi.string().required(),
       email: Joi.string().email().required(),
+      ra: Joi.string(),
+      cpf: Joi.string()
     }
   }, {
     messages: {
