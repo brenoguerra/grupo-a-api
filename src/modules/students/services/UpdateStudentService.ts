@@ -33,6 +33,8 @@ export default class UpdateStudentService {
 
     const student = await this.studentRepository.save({
       ...findStudent,
+      cpf: findStudent.cpf,
+      ra: findStudent.ra,
       name,
       email,
     })

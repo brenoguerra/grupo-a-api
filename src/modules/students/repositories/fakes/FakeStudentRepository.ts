@@ -38,7 +38,7 @@ export default class FakeStudentRepository implements IStudentRepository {
     return this.students.find(student => student.id === id)
   }
 
-  public async findByRA(ra: number): Promise<Student | undefined> {
+  public async findByRA(ra: string): Promise<Student | undefined> {
     return this.students.find(student => student.ra === ra)
   }
 

@@ -15,10 +15,10 @@ describe('CreateStudent', () => {
 
   it('should be able to throw error if sent ra is already in use', async () => {
     await fakeStudentRepository.create({
-      cpf: 123456789,
+      cpf: '123456789',
       email: 'john@doe.com',
       name: 'John Doe',
-      ra: 123456
+      ra: '123456'
     })
 
     await expect(

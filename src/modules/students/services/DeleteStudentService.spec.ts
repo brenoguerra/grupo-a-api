@@ -23,10 +23,10 @@ describe('DeleteStudent', () => {
 
   it('should be able to delete a student', async () => {
     const student = await fakeStudentRepository.create({
-      cpf: 123456789,
+      cpf: '123456789',
       email: 'john@doe.com',
       name: 'John Doe',
-      ra: 123456
+      ra: '123456'
     })
 
     const { student: deletedStudent } = await deleteStudent.execute({

@@ -39,7 +39,7 @@ export default class StudentRepository implements IStudentRepository {
     return student || undefined
   }
 
-  public async findByRA(ra: number): Promise<Student | undefined> {
+  public async findByRA(ra: string): Promise<Student | undefined> {
     const student = await this.ormRepository.findOne({
       where: {
         ra,

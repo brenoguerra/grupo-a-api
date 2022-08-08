@@ -11,10 +11,10 @@ describe('ListStudent', () => {
 
     for (let i = 0; i < 25; i++) {
       await fakeStudentRepository.create({
-        cpf: Math.random() * (100 - 10) + 10,
+        cpf: String(Math.random() * (100 - 10) + 10),
         email: `email${i}@mail.com`,
         name: `User ${i}`,
-        ra: Math.random() * (100 - 10) + 10,
+        ra: String(Math.random() * (100 - 10) + 10),
       })
     }
   })

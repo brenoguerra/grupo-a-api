@@ -17,10 +17,10 @@ export default class Student {
   email: string
 
   @Column({ unique: true, nullable: false })
-  ra: number
+  ra: string
 
   @Column({ nullable: false })
-  cpf: number
+  cpf: string
 
   @CreateDateColumn()
   created_at: Date;

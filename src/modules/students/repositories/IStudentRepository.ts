@@ -7,6 +7,6 @@ export default interface IStudentRepository {
   save(data: IUpdateStudentDTO): Promise<Student>
   delete(id: number): Promise<void>
   findById(id: number): Promise<Student | undefined>
-  findByRA(ra: number): Promise<Student | undefined>
+  findByRA(ra: string): Promise<Student | undefined>
   list(page: number, limit: number): Promise<{ total: number, students: Student[] }>
 }

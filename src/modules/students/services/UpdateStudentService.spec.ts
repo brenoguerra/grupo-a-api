@@ -25,10 +25,10 @@ describe('UpdateStudent', () => {
 
   it('should be able to update a student', async () => {
     const originalStudent = await fakeStudentRepository.create({
-      cpf: 123456789,
+      cpf: '123456789',
       email: 'john@doe.com',
       name: 'John Doe',
-      ra: 123456
+      ra: '123456'
     })
 
     const { student: updatedStudent } = await updateStudent.execute({

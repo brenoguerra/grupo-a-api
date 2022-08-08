@@ -28,17 +28,14 @@ export default class CreateStudentService {
     ra,
     cpf,
   }: IRequest): Promise<IResponse> {
-    const onlyRANumbers = Number(ra.replace(/\D/g, ''))
-    const onlyCPFNumbers = Number(cpf.replace(/\D/g, ''))
-
-    const alreadyInUseRA = await this.studentRepository.findByRA(onlyRANumbers)
+    const alreadyInUseRA = await this.studentRepository.findByRA(ra)
     if (alreadyInUseRA) throw new AppError('Esse R.A. já está em uso')
 
     const student = await this.studentRepository.create({
       name,
       email,
-      ra: onlyRANumbers,
-      cpf: onlyCPFNumbers
+      ra,
+      cpf
     })
 
     return {
